@@ -4,10 +4,9 @@ import { LoginForm } from '../features/auth/components/LoginForm';
 
 export default function LoginScreen() {
     return (
-        <View className="flex-1 justify-center px-4 bg-white dark:bg-zinc-900">
+        <View className="flex-1 justify-center items-center bg-zinc-50 dark:bg-zinc-900 px-6">
             <Stack.Screen options={{ headerShown: false }} />
-            {/* 画面内での最大幅と中央寄せの制御は親のコンテナで行う */}
-            <View className="w-full max-w-md mx-auto">
+            <View className="w-full max-w-sm flex-none self-center">
                 <LoginForm />
             </View>
         </View>

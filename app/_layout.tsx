@@ -1,4 +1,5 @@
 import '../global.css';
+import '../mock/server'; // モックAPIの初期化（循環参照回避のため _layout で読み込み）
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { DarkTheme, DefaultTheme, ThemeProvider } from '@react-navigation/native';
 import { Stack } from 'expo-router';

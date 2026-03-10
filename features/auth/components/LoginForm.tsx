@@ -47,16 +47,17 @@ export function LoginForm() {
     };
 
     return (
-        <View className="py-12">
-            <Text className="text-4xl font-extrabold mb-12 tracking-wide text-center text-zinc-900 dark:text-zinc-50">
+        <View className="bg-white dark:bg-zinc-800 rounded-3xl px-6 py-8 shadow-sm">
+            {/* タイトル */}
+            <Text className="text-2xl font-extrabold tracking-wide text-center text-zinc-900 dark:text-zinc-50 mb-5">
                 Result Manager
             </Text>
 
             {/* ログインID */}
-            <View className="mb-6">
-                <Text className="text-xs font-bold tracking-wider uppercase mb-2 text-zinc-500 dark:text-zinc-400">Login ID</Text>
+            <View className="mb-1">
+                <Text className="text-xs font-bold tracking-wider uppercase mb-1 text-zinc-500 dark:text-zinc-400">Login ID</Text>
                 <TextInput
-                    className={`bg-zinc-100 dark:bg-zinc-800 rounded-2xl p-4 text-base font-medium text-zinc-900 dark:text-zinc-100
+                    className={`bg-zinc-100 dark:bg-zinc-700 rounded-xl px-4 py-3 text-sm font-medium text-zinc-900 dark:text-zinc-100
             ${errors.login_id ? 'border border-red-500' : ''}`}
                     placeholder="Enter your ID"
                     placeholderTextColor="#9ca3af"
@@ -64,14 +65,16 @@ export function LoginForm() {
                     onChangeText={setLoginId}
                     autoCapitalize="none"
                 />
-                {errors.login_id && <Text className="text-red-500 text-xs mt-2 font-medium">{errors.login_id}</Text>}
+                <View className="h-4 mt-0.5 justify-center">
+                    {errors.login_id && <Text className="text-red-500 text-xs font-medium">{errors.login_id}</Text>}
+                </View>
             </View>
 
             {/* パスワード */}
-            <View className="mb-6">
-                <Text className="text-xs font-bold tracking-wider uppercase mb-2 text-zinc-500 dark:text-zinc-400">Password</Text>
+            <View className="mb-1">
+                <Text className="text-xs font-bold tracking-wider uppercase mb-1 text-zinc-500 dark:text-zinc-400">Password</Text>
                 <TextInput
-                    className={`bg-zinc-100 dark:bg-zinc-800 rounded-2xl p-4 text-base font-medium text-zinc-900 dark:text-zinc-100
+                    className={`bg-zinc-100 dark:bg-zinc-700 rounded-xl px-4 py-3 text-sm font-medium text-zinc-900 dark:text-zinc-100
             ${errors.password ? 'border border-red-500' : ''}`}
                     placeholder="Enter your password"
                     placeholderTextColor="#9ca3af"
@@ -79,30 +82,34 @@ export function LoginForm() {
                     onChangeText={setPassword}
                     secureTextEntry
                 />
-                {errors.password && <Text className="text-red-500 text-xs mt-2 font-medium">{errors.password}</Text>}
+                <View className="h-4 mt-0.5 justify-center">
+                    {errors.password && <Text className="text-red-500 text-xs font-medium">{errors.password}</Text>}
+                </View>
             </View>
 
             {/* 競技名選択 */}
-            <View className="mb-10">
-                <Text className="text-xs font-bold tracking-wider uppercase mb-2 text-zinc-500 dark:text-zinc-400">Competition</Text>
-                <View className="bg-zinc-100 dark:bg-zinc-800 rounded-2xl overflow-hidden">
+            <View className="mb-4">
+                <Text className="text-xs font-bold tracking-wider uppercase mb-1 text-zinc-500 dark:text-zinc-400">Competition</Text>
+                <View className="bg-zinc-100 dark:bg-zinc-700 rounded-xl overflow-hidden">
                     <Picker
                         selectedValue={competition}
                         onValueChange={(itemValue) => setCompetition(itemValue)}
-                        style={{ color: '#18181b', backgroundColor: 'transparent' }}
-                        itemStyle={{ fontSize: 16, fontWeight: '500' }}
+                        style={{ color: '#18181b', backgroundColor: 'transparent', height: 42, paddingHorizontal: 16 }}
+                        itemStyle={{ fontSize: 14, fontWeight: '500' }}
                     >
                         {MOCK_COMPETITIONS.map(comp => (
                             <Picker.Item key={comp.id} label={comp.name} value={comp.name} />
                         ))}
                     </Picker>
                 </View>
-                {errors.competition_name && <Text className="text-red-500 text-xs mt-2 font-medium">{errors.competition_name}</Text>}
+                <View className="h-4 mt-0.5 justify-center">
+                    {errors.competition_name && <Text className="text-red-500 text-xs font-medium">{errors.competition_name}</Text>}
+                </View>
             </View>
 
             {/* ログインボタン */}
             <TouchableOpacity
-                className={`bg-zinc-900 dark:bg-zinc-100 rounded-2xl p-5 flex-row justify-center items-center active:opacity-80
+                className={`bg-zinc-900 dark:bg-zinc-100 rounded-xl py-3 flex-row justify-center items-center active:opacity-80
           ${isPending ? 'opacity-50' : ''}`}
                 onPress={handleLogin}
                 disabled={isPending}
@@ -110,7 +117,7 @@ export function LoginForm() {
                 {isPending ? (
                     <ActivityIndicator color="#fff" />
                 ) : (
-                    <Text className="text-white dark:text-zinc-900 text-lg font-bold tracking-wide">Sign In</Text>
+                    <Text className="text-white dark:text-zinc-900 text-base font-bold tracking-wide">Sign In</Text>
                 )}
             </TouchableOpacity>
         </View>
